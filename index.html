@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: lightblue; /* Change background color to light blue */
         }
         #uploadForm {
             margin-bottom: 20px;
@@ -30,8 +31,9 @@
 </head>
 <body>
     <h1>Image Sharing Website</h1>
+    <!-- Input for selecting files from user's device -->
     <form id="uploadForm">
-        <input type="file" id="fileInput" accept="image/*">
+        <input type="file" id="fileInput" accept="image/*,capture=camera"> <!-- Allow image selection or camera capture -->
         <button type="submit">Upload</button>
     </form>
     <div id="imageGallery"></div>
@@ -68,3 +70,4 @@
     </script>
 </body>
 </html>
+
