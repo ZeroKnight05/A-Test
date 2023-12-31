@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Sharing Website</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #uploadForm {
+            margin-bottom: 20px;
+        }
+        #imageGallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .imageContainer {
+            width: 200px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        .imageContainer img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Sharing Website</h1>
+    <form id="uploadForm">
+        <input type="file" id="fileInput" accept="image/*">
+        <button type="submit">Upload</button>
+    </form>
+    <div id="imageGallery"></div>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const fileInput = document.getElementById('fileInput');
+            const imageGallery = document.getElementById('imageGallery');
+
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    const imageUrl = event.target.result;
+
+                    // Create image element and append it to the gallery
+                    const imageContainer = document.createElement('div');
+                    imageContainer.classList.add('imageContainer');
+
+                    const image = document.createElement('img');
+                    image.src = imageUrl;
+
+                    imageContainer.appendChild(image);
+                    imageGallery.appendChild(imageContainer);
+                }
+
+                reader.readAsDataURL(file); // Read the file as a data URL
+            }
+        });
+    </script>
+</body>
+</html>
